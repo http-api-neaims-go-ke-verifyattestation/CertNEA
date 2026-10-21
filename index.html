@@ -5,113 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEA Migrant Workers Clearance Verification</title>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f7f9fa;
-            margin: 0;
-            padding: 15px;
-            color: #222;
-        }
-        .container {
-            max-width: 480px;
-            margin: 20px auto;
-            background: #ffffff;
-            padding: 24px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            text-align: center;
-        }
-        .logo-area img {
-            width: 60px;
-            height: auto;
-            margin-bottom: 10px;
-        }
-        h2 {
-            color: #0b3954;
-            font-size: 20px;
-            margin: 5px 0;
-        }
-        .subtitle {
-            font-size: 13px;
-            color: #666;
-            margin-bottom: 20px;
-        }
-        .badge {
-            background-color: #e6f4ea;
-            color: #137333;
-            font-weight: bold;
-            font-size: 14px;
-            padding: 6px 16px;
-            border-radius: 20px;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
-        .badge.invalid {
-            background-color: #fce8e6;
-            color: #c5221f;
-        }
-        .status-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #111;
-            margin-bottom: 8px;
-        }
-        .status-desc {
-            font-size: 13px;
-            color: #555;
-            line-height: 1.4;
-            margin-bottom: 25px;
-            padding: 0 10px;
-        }
-        .section-title {
-            text-align: left;
-            font-size: 11px;
-            font-weight: bold;
-            color: #888;
-            letter-spacing: 0.5px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 6px;
-            margin-top: 20px;
-            margin-bottom: 15px;
-        }
-        .details-list {
-            text-align: left;
-        }
-        .detail-item {
-            margin-bottom: 14px;
-        }
-        .detail-label {
-            font-size: 11px;
-            color: #777;
-            text-transform: uppercase;
-            margin-bottom: 2px;
-        }
-        .detail-value {
-            font-size: 15px;
-            font-weight: bold;
-            color: #111;
-        }
-        .footer {
-            margin-top: 30px;
-            border-top: 1px solid #eee;
-            padding-top: 15px;
-            font-size: 11px;
-            color: #666;
-            line-height: 1.5;
-        }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f7f9fa; margin: 0; padding: 15px; color: #222; }
+        .container { max-width: 480px; margin: 20px auto; background: #ffffff; padding: 24px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); text-align: center; }
+        h2 { color: #0b3954; font-size: 20px; margin: 5px 0; }
+        .subtitle { font-size: 13px; color: #666; margin-bottom: 20px; }
+        .badge { background-color: #e6f4ea; color: #137333; font-weight: bold; font-size: 14px; padding: 6px 16px; border-radius: 20px; display: inline-block; margin-bottom: 15px; }
+        .badge.invalid { background-color: #fce8e6; color: #c5221f; }
+        .status-title { font-size: 18px; font-weight: bold; color: #111; margin-bottom: 8px; }
+        .status-desc { font-size: 13px; color: #555; line-height: 1.4; margin-bottom: 25px; padding: 0 10px; }
+        .section-title { text-align: left; font-size: 11px; font-weight: bold; color: #888; border-bottom: 1px solid #eee; padding-bottom: 6px; margin-top: 20px; margin-bottom: 15px; }
+        .details-list { text-align: left; }
+        .detail-item { margin-bottom: 14px; }
+        .detail-label { font-size: 11px; color: #777; text-transform: uppercase; margin-bottom: 2px; }
+        .detail-value { font-size: 15px; font-weight: bold; color: #111; }
+        .footer { margin-top: 30px; border-top: 1px solid #eee; padding-top: 15px; font-size: 11px; color: #666; line-height: 1.5; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="logo-area">
-        <!-- NEA Emblem Placeholder / Text -->
-        <h2>NEA Migrant Workers Clearance</h2>
-        <div class="subtitle">National Employment Authority of Kenya</div>
-    </div>
+    <h2>NEA Migrant Workers Clearance</h2>
+    <div class="subtitle">National Employment Authority of Kenya</div>
 
     <div id="content">
-        <!-- Dynamically injected by JavaScript -->
+        <p style="color: #777;">Verifying certificate record...</p>
     </div>
 
     <div class="footer" id="footer-text">
@@ -121,83 +38,63 @@
 </div>
 
 <script>
-    // Database of certificates (You can update or pull this from your CSV data)
-    const DATABASE = {
-        "NEA-MWC-2026-7DD31E4F": {
-            holder: "MICHAEL CHEGE KABOYO",
-            destination: "United Arab Emirates",
-            employer: "ABIR ALQARAT RESOURCES COMPANY",
-            position: "LABOURER",
-            agency: "AZURE SMART AGENCY LTD",
-            attestedBy: "ERICK ODHIAMBO WASONGA",
-            dateAttested: "25 August 2026"
-        },
-        "NEA-MWC-2026-FFOF1C81": {
-            holder: "TRIZZER KAVERE",
-            destination: "Saudi Arabia",
-            employer: "JADWA",
-            position: "HOUSEMAIDS",
-            agency: "WEST TRAVEL & TOURS LTD",
-            attestedBy: "ERICK ODHIAMBO WASONGA",
-            dateAttested: "17 Oct 2026"
+    async function verifyCertificate() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const certNo = urlParams.get('cert');
+        const contentDiv = document.getElementById('content');
+        const certFooterId = document.getElementById('cert-footer-id');
+
+        if (!certNo) {
+            renderInvalid('No Certificate Provided');
+            return;
         }
-    };
 
-    // Get 'cert' query parameter from URL (e.g., index.html?cert=NEA-MWC-2026-FFOF1C81)
-    const urlParams = new URLSearchParams(window.location.search);
-    const certNo = urlParams.get('cert');
-    const contentDiv = document.getElementById('content');
-    const certFooterId = document.getElementById('cert-footer-id');
-
-    if (certNo && DATABASE[certNo]) {
-        const data = DATABASE[certNo];
         certFooterId.innerText = `Certificate No.: ${certNo}`;
-        
-        contentDiv.innerHTML = `
-            <div class="badge">✓ Verified</div>
-            <div class="status-title">This certificate is valid</div>
-            <div class="status-desc">Issued by the National Employment Authority of Kenya. The details below match the official record.</div>
 
-            <div class="section-title">CERTIFICATE DETAILS</div>
-            <div class="details-list">
-                <div class="detail-item">
-                    <div class="detail-label">Holder</div>
-                    <div class="detail-value">${data.holder}</div>
-                </div>
-                <div class="detail-item">
-                    <div class="detail-label">Destination</div>
-                    <div class="detail-value">${data.destination}</div>
-                </div>
-                <div class="detail-item">
-                    <div class="detail-label">Employer</div>
-                    <div class="detail-value">${data.employer}</div>
-                </div>
-                <div class="detail-item">
-                    <div class="detail-label">Position</div>
-                    <div class="detail-value">${data.position}</div>
-                </div>
-                <div class="detail-item">
-                    <div class="detail-label">Recruiting Agency</div>
-                    <div class="detail-value">${data.agency}</div>
-                </div>
-                <div class="detail-item">
-                    <div class="detail-label">Attested by</div>
-                    <div class="detail-value">${data.attestedBy}</div>
-                </div>
-                <div class="detail-item">
-                    <div class="detail-label">Date of Attestation</div>
-                    <div class="detail-value">${data.dateAttested}</div>
-                </div>
-            </div>
-        `;
-    } else {
-        certFooterId.innerText = `Certificate No.: ${certNo || 'Unknown'}`;
-        contentDiv.innerHTML = `
+        try {
+            // Fetch the JSON database file hosted on your GitHub Pages
+            const response = await fetch('./database.json?cache_bypass=' + new Date().getTime());
+            if (!response.ok) throw new Error('Could not load database');
+            
+            const DATABASE = await response.json();
+
+            if (DATABASE[certNo]) {
+                const data = DATABASE[certNo];
+                contentDiv.innerHTML = `
+                    <div class="badge">✓ Verified</div>
+                    <div class="status-title">This certificate is valid</div>
+                    <div class="status-desc">Issued by the National Employment Authority of Kenya. The details below match the official record.</div>
+
+                    <div class="section-title">CERTIFICATE DETAILS</div>
+                    <div class="details-list">
+                        <div class="detail-item"><div class="detail-label">Holder</div><div class="detail-value">${data.holder}</div></div>
+                        <div class="detail-item"><div class="detail-label">Destination</div><div class="detail-value">${data.destination}</div></div>
+                        <div class="detail-item"><div class="detail-label">Employer</div><div class="detail-value">${data.employer}</div></div>
+                        <div class="detail-item"><div class="detail-label">Position</div><div class="detail-value">${data.position}</div></div>
+                        <div class="detail-item"><div class="detail-label">Recruiting Agency</div><div class="detail-value">${data.agency}</div></div>
+                        <div class="detail-item"><div class="detail-label">Attested by</div><div class="detail-value">${data.attestedBy}</div></div>
+                        <div class="detail-item"><div class="detail-label">Date of Attestation</div><div class="detail-value">${data.dateAttested}</div></div>
+                    </div>
+                `;
+            } else {
+                renderInvalid(certNo);
+            }
+        } catch (error) {
+            console.error(error);
+            renderInvalid(certNo);
+        }
+    }
+
+    function renderInvalid(certNo) {
+        document.getElementById('cert-footer-id').innerText = `Certificate No.: ${certNo || 'Unknown'}`;
+        document.getElementById('content').innerHTML = `
             <div class="badge invalid">✖ Invalid</div>
             <div class="status-title" style="color: #c5221f;">Certificate Not Found</div>
             <div class="status-desc">The certificate number provided does not exist or is invalid in the National Employment Authority database.</div>
         `;
     }
+
+    verifyCertificate();
 </script>
 
 </body>
