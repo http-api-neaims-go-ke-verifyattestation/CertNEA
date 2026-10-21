@@ -40,7 +40,7 @@
 <script>
     async function verifyCertificate() {
         const urlParams = new URLSearchParams(window.location.search);
-        const certNo = urlParams.get('cert');
+        const certNo = urlParams.get('cert') ? urlParams.get('cert').trim() : '';
         const contentDiv = document.getElementById('content');
         const certFooterId = document.getElementById('cert-footer-id');
 
@@ -52,11 +52,13 @@
         certFooterId.innerText = `Certificate No.: ${certNo}`;
 
         try {
-            // Fetch the JSON database file hosted on your GitHub Pages
-            const response = await fetch('./database.json?cache_bypass=' + new Date().getTime());
-            if (!response.ok) throw new Error('Could not load database');
+            // Fetch database.json with cache-busting timestamp
+            const response = await fetch(`./database.json?v=${new Date().getTime()}`);
+            if (!response.ok) throw new Error('Could not load database.json (HTTP ' + response.status + ')');
             
             const DATABASE = await response.json();
+            console.log("Loaded Database Keys:", Object.keys(DATABASE));
+            console.log("Looking for Certificate:", certNo);
 
             if (DATABASE[certNo]) {
                 const data = DATABASE[certNo];
@@ -80,8 +82,12 @@
                 renderInvalid(certNo);
             }
         } catch (error) {
-            console.error(error);
-            renderInvalid(certNo);
+            console.error("Verification Error:", error);
+            contentDiv.innerHTML = `
+                <div class="badge invalid">✖ Error</div>
+                <div class="status-title" style="color: #c5221f;">Database Load Failed</div>
+                <div class="status-desc">Could not connect to the verification database. Please ensure 'database.json' is uploaded in your repository.</div>
+            `;
         }
     }
 
