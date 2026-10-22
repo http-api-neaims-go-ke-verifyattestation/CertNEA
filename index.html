@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEA Migrant Workers Clearance Verification</title>
     <style>
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: #f8f9fa;
@@ -36,7 +34,6 @@
             font-size: 20px;
             font-weight: 700;
             margin: 0 0 6px 0;
-            letter-spacing: -0.2px;
         }
         .sub-title {
             color: #6c757d;
@@ -113,16 +110,13 @@
             color: #004b87;
             text-decoration: none;
         }
-        .footer-cert-no {
-            color: #757575;
-        }
     </style>
 </head>
 <body>
 
 <div class="card">
-    <!-- Official NEA Logo -->
-    <img src="./image2.png" alt="NEA Logo" class="logo">
+    <!-- NEA Logo (falls back cleanly if image is missing) -->
+    <img src="image2.png" alt="NEA Logo" class="logo" onerror="this.style.display='none'">
 
     <h1 class="main-title">NEA Migrant Workers Clearance</h1>
     <div class="sub-title">National Employment Authority of Kenya</div>
@@ -133,7 +127,7 @@
 
     <div class="footer">
         Verified at <a href="https://nea.go.ke" target="_blank">nea.go.ke</a> &bull; NEA Toll-Free <b>0800 222 223</b><br>
-        <span class="footer-cert-no" id="cert-footer-id">Certificate No.: —</span>
+        <span id="cert-footer-id">Certificate No.: —</span>
     </div>
 </div>
 
@@ -152,11 +146,16 @@
         certFooterId.innerText = `Certificate No.: ${certNo}`;
 
         try {
-            // Fetch database.json with cache-busting timestamp
-            const response = await fetch(`./database.json?v=${new Date().getTime()}`);
-            if (!response.ok) throw new Error('Could not load database.json');
+            // Absolute path detection for GitHub Pages sub-folders
+            const basePath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'));
+            const jsonUrl = `${window.location.origin}${basePath}/database.json?v=${new Date().getTime()}`;
+            
+            console.log("Fetching database from:", jsonUrl);
+            const response = await fetch(jsonUrl);
+            if (!response.ok) throw new Error('HTTP error ' + response.status);
             
             const DATABASE = await response.json();
+            console.log("Database loaded successfully. Keys found:", Object.keys(DATABASE));
 
             if (DATABASE[certNo]) {
                 const data = DATABASE[certNo];
@@ -172,41 +171,20 @@
                     <div class="section-heading">CERTIFICATE DETAILS</div>
                     
                     <div class="details-container">
-                        <div class="field-group">
-                            <div class="field-label">Holder</div>
-                            <div class="field-value">${data.holder}</div>
-                        </div>
-                        <div class="field-group">
-                            <div class="field-label">Destination</div>
-                            <div class="field-value">${data.destination}</div>
-                        </div>
-                        <div class="field-group">
-                            <div class="field-label">Employer</div>
-                            <div class="field-value">${data.employer}</div>
-                        </div>
-                        <div class="field-group">
-                            <div class="field-label">Position</div>
-                            <div class="field-value">${data.position}</div>
-                        </div>
-                        <div class="field-group">
-                            <div class="field-label">Recruiting Agency</div>
-                            <div class="field-value">${data.agency}</div>
-                        </div>
-                        <div class="field-group">
-                            <div class="field-label">Attested by</div>
-                            <div class="field-value">${data.attestedBy}</div>
-                        </div>
-                        <div class="field-group">
-                            <div class="field-label">Date of Attestation</div>
-                            <div class="field-value">${data.dateAttested}</div>
-                        </div>
+                        <div class="field-group"><div class="field-label">Holder</div><div class="field-value">${data.holder}</div></div>
+                        <div class="field-group"><div class="field-label">Destination</div><div class="field-value">${data.destination}</div></div>
+                        <div class="field-group"><div class="field-label">Employer</div><div class="field-value">${data.employer}</div></div>
+                        <div class="field-group"><div class="field-label">Position</div><div class="field-value">${data.position}</div></div>
+                        <div class="field-group"><div class="field-label">Recruiting Agency</div><div class="field-value">${data.agency}</div></div>
+                        <div class="field-group"><div class="field-label">Attested by</div><div class="field-value">${data.attestedBy}</div></div>
+                        <div class="field-group"><div class="field-label">Date of Attestation</div><div class="field-value">${data.dateAttested}</div></div>
                     </div>
                 `;
             } else {
                 renderInvalid(certNo);
             }
         } catch (error) {
-            console.error(error);
+            console.error("Fetch error:", error);
             renderInvalid(certNo);
         }
     }
