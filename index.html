@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEA Migrant Workers Clearance Verification</title>
     <style>
-        * { box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+        }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: #f8f9fa;
@@ -19,10 +21,13 @@
             background: #ffffff;
             width: 100%;
             max-width: 440px;
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 32px 24px 24px 24px;
-            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
             text-align: center;
+            /* Green Top Strip Accent */
+            border-top: 5px solid #38a169;
+            overflow: hidden;
         }
         .logo {
             width: 75px;
@@ -34,6 +39,7 @@
             font-size: 20px;
             font-weight: 700;
             margin: 0 0 6px 0;
+            letter-spacing: -0.2px;
         }
         .sub-title {
             color: #6c757d;
@@ -110,13 +116,16 @@
             color: #004b87;
             text-decoration: none;
         }
+        .footer-cert-no {
+            color: #757575;
+        }
     </style>
 </head>
 <body>
 
 <div class="card">
-    <!-- NEA Logo (falls back cleanly if image is missing) -->
-    <img src="https://raw.githubusercontent.com/http-api-neaims-go-ke-verifyattestation/CertNEA/main/image2.png" alt="NEA Logo" class="logo">
+    <!-- Embedded Base64 NEA Logo -->
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOoAAAEcCAYAAADJKCj+AAAABmJLR0QA/wD/AP+gvaeTAAAgAElEQVR4nOy9aZBkV3Xm+9vL3L2y9Kqqrq4W9UIt3Q2iBQTYEGBsB4MNGNt4sRnsmAnPDIb3i2eCx3iMRx4Mw4NhPObF2MZb84x2GzAYG9sIARIIsLWB2IIWC1pI3a2Wrq4ltaSqrCxfbvbhx4sXL3NfLnMfsqpUdeXvRkS8efIkr/O/33O/+51745v/84d+8AMf+AOf8An/3/f3v//3eX/+97X9/S1y33v/3/7+3v7/e/+f4A2v53v7ff/v/7f//0" class="logo" alt="NEA Logo">
 
     <h1 class="main-title">NEA Migrant Workers Clearance</h1>
     <div class="sub-title">National Employment Authority of Kenya</div>
@@ -127,7 +136,7 @@
 
     <div class="footer">
         Verified at <a href="https://nea.go.ke" target="_blank">nea.go.ke</a> &bull; NEA Toll-Free <b>0800 222 223</b><br>
-        <span id="cert-footer-id">Certificate No.: —</span>
+        <span class="footer-cert-no" id="cert-footer-id">Certificate No.: —</span>
     </div>
 </div>
 
@@ -146,16 +155,13 @@
         certFooterId.innerText = `Certificate No.: ${certNo}`;
 
         try {
-            // Absolute path detection for GitHub Pages sub-folders
             const basePath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'));
             const jsonUrl = `${window.location.origin}${basePath}/database.json?v=${new Date().getTime()}`;
             
-            console.log("Fetching database from:", jsonUrl);
             const response = await fetch(jsonUrl);
             if (!response.ok) throw new Error('HTTP error ' + response.status);
             
             const DATABASE = await response.json();
-            console.log("Database loaded successfully. Keys found:", Object.keys(DATABASE));
 
             if (DATABASE[certNo]) {
                 const data = DATABASE[certNo];
@@ -184,7 +190,7 @@
                 renderInvalid(certNo);
             }
         } catch (error) {
-            console.error("Fetch error:", error);
+            console.error(error);
             renderInvalid(certNo);
         }
     }
