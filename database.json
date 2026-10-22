@@ -1,86 +1,4 @@
 {
-  "DEMO-2026-001": {
-    "holder": "WORKER A",
-    "destination": "United Arab Emirates",
-    "employer": "EXAMPLE EMPLOYER LTD",
-    "position": "LABOURER",
-    "agency": "EXAMPLE AGENCY LTD",
-    "attestedBy": "OFFICER A",
-    "dateAttested": "1/15/2026"
-  },
-  "DEMO-2026-002": {
-    "holder": "WORKER B",
-    "destination": "Qatar",
-    "employer": "DEMO FACILITIES LLC",
-    "position": "DRIVER",
-    "agency": "DEMO AGENCY LTD",
-    "attestedBy": "OFFICER B",
-    "dateAttested": "1/20/2026"
-  },
-  "DEMO-2026-003": {
-    "holder": "WORKER C",
-    "destination": "Saudi Arabia",
-    "employer": "SAMPLE HOSPITALITY LLC",
-    "position": "WAITER",
-    "agency": "SAMPLE AGENCY LTD",
-    "attestedBy": "OFFICER C",
-    "dateAttested": "2/3/2026"
-  },
-  "DEMO-2026-004": {
-    "holder": "WORKER D",
-    "destination": "Oman",
-    "employer": "DEMO CONSTRUCTION LLC",
-    "position": "MASON",
-    "agency": "DEMO RECRUITMENT LTD",
-    "attestedBy": "OFFICER D",
-    "dateAttested": "2/12/2026"
-  },
-  "DEMO-2026-005": {
-    "holder": "WORKER E",
-    "destination": "Bahrain",
-    "employer": "EXAMPLE CLEANING LLC",
-    "position": "CLEANER",
-    "agency": "EXAMPLE RECRUITMENT LTD",
-    "attestedBy": "OFFICER E",
-    "dateAttested": "3/1/2026"
-  },
-  "DEMO-2026-006": {
-    "holder": "WORKER F",
-    "destination": "United Arab Emirates",
-    "employer": "SAMPLE LOGISTICS LLC",
-    "position": "WAREHOUSE ASSISTANT",
-    "agency": "SAMPLE RECRUITMENT LTD",
-    "attestedBy": "OFFICER F",
-    "dateAttested": "3/14/2026"
-  },
-  "DEMO-2026-007": {
-    "holder": "WORKER G",
-    "destination": "Qatar",
-    "employer": "DEMO HOTEL LLC",
-    "position": "COOK",
-    "agency": "DEMO AGENCY LTD",
-    "attestedBy": "OFFICER G",
-    "dateAttested": "4/5/2026"
-  },
-  "DEMO-2026-008": {
-    "holder": "WORKER H",
-    "destination": "Saudi Arabia",
-    "employer": "EXAMPLE INDUSTRIES LLC",
-    "position": "ELECTRICIAN",
-    "agency": "EXAMPLE AGENCY LTD",
-    "attestedBy": "OFFICER H",
-    "dateAttested": "4/18/2026"
-  },
-  "DEMO-2026-009": {
-    "holder": "WORKER I",
-    "destination": "Oman",
-    "employer": "SAMPLE MAINTENANCE LLC",
-    "position": "PLUMBER",
-    "agency": "SAMPLE AGENCY LTD",
-    "attestedBy": "OFFICER I",
-    "dateAttested": "5/9/2026"
-  },
-  {
   "NEA-MWC-2026-1AHLUBTK": {
     "holder": "FRECIA NYAMBURA",
     "destination": "KUWAIT",
@@ -170,14 +88,5 @@
     "agency": "TEACHERS ABROAD LIMITED",
     "attestedBy": "ERICK ODHIAMBO WASONGA",
     "dateAttested": "10/21/2026"
-  },
-  "DEMO-2026-010": {
-    "holder": "WORKER J",
-    "destination": "Bahrain",
-    "employer": "DEMO SERVICES LLC",
-    "position": "SECURITY ASSISTANT",
-    "agency": "DEMO RECRUITMENT LTD",
-    "attestedBy": "OFFICER J",
-    "dateAttested": "5/22/2026"
   }
 }
